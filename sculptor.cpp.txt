@@ -1,0 +1,59 @@
+#include "sculptor.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <math.h>
+
+// Construindo a matriz 3D
+sculptor::sculptor(int anx, int bny, int cnz)
+{
+    nx = anx;
+    ny = bny;
+    nz = cnz;
+    //Matriz3D
+    v = new Voxel**[nx];
+    //Matriz dentro da matriz
+    v[0] = new Voxel*[nx*ny];
+    //Matriz dentro da Matriz da Matriz
+    v[0][0]= new Voxel[nx*ny*nz];
+    //Colocando os valores de acesso da matriz da matriz
+    for(int i=1; i<nz; i++)
+    {
+        v[i] = v[i-1] + ny;
+    }
+    //Colocando os valores de acesso da matriz da matriz da matriz
+
+    for(int i=1; i<nz*ny; i++)
+    {
+        v[0][i] = v[0][i-1] + nx;
+    }
+
+}
+
+//Destrutor
+sculptor::~sculptor()
+{
+   // Destruinda as matrizes das matrizes dentro da matriz
+    delete [] v[0][0];
+    // Destruinda as matrizes das matrizes
+    delete [] v[0];
+    // Destruinda a matriz
+    delete [] v;
+
+}
+void sculptor::setColor(float r, float g, float b, float alpha){
+   // checando se os valores das letras são validos
+        if(r>1)
+            r=1;
+        if(r<0)
+            r=0;
+        if(g>1)
+            g=1;
+        if(g<0)
+            g=0;
+        if(b>1)
+            b=1;
+        if(b<0)
+            b=0;
+        alpha=alpha;
+}

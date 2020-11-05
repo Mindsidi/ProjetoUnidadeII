@@ -1,0 +1,22 @@
+#include "sculptor.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <math.h>
+
+int main()
+{
+    sculptor escultura(0,0,0);
+    escultura.setColor(0,0,0,0);
+    escultura.putVoxel(0,0,0);
+    escultura.cutVoxel(0,0,0);
+    escultura.putBox(0,0,0,0,0,0);
+    escultura.cutBox(0,0,0,0,0,0);
+    escultura.setColor(0,0,0,0.0);
+    escultura.putSphere(0,0,0,0);
+    escultura.cutSphere(0,0,0,0);
+    escultura.putEllipsoid(0,0,0,0,0,0);
+    escultura.cutEllipsoid(0,0,0,0,0,0);
+    escultura.writeOFF("algumacoisa.off");
+    return 0;
+}
